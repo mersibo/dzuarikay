@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ресторан</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/iconka1.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img src="assets/main-restik.png" class="rooms-main-img" alt="Ресторан-фон">
+    <main-nav>
+      <div class="main-logo">
+        <img src="assets/img_layer1.svg" alt="Логотип Дзуарикау">
+      </div>
+      <ul>
+        <li><a href="index.html">Об отеле</a></li>
+        <li><a href="rooms.html">Номера</a></li>
+        <li><a href="restik.html">Ресторан ▼</a></li>
+        <li><a href="pool.html">Бассейн & Баня</a></li>
+        <li><a href="ekskurs.html">Экскурсии</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+      <a href="tel:+79280701155" class="phone-box" style="margin-top: -55px; margin-right: 10px;">+7 (928) 070-11-55</a>
+    </main-nav>
+    <h1 class="header-title">Ресторан</h1>
+    <div class="booking-form">
+      <div class="hint">Бронирование <br> номеров</div>
+
+      <div class="form-field">
+        <div class="input-wrapper">
+          <span class="label-inside">Дата заезда</span>
+          <input type="date">
+          <img src="assets/calendr1.svg" class="calendar-icon" alt="иконка">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="input-wrapper">
+          <span class="label-inside">Дата выезда</span>
+          <input type="date">
+          <img src="assets/calendar2.svg" class="calendar-icon" alt="иконка">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="input-wrapper">
+          <span class="label-inside">Гостей</span>
+          <input type="number">
+        </div>
+      </div>
+
+      <button class="btn">Найти</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="trigger-point"></div>
+    <nav class="nav">
+      <div class="logo">
+        <img src="assets/img_layer1.svg" alt="Логотип Дзуарикау">
+      </div>
+      <ul>
+        <li><a href="index.html">Об отеле</a></li>
+        <li><a href="rooms.html">Номера</a></li>
+        <li><a href="restik.html">Ресторан ▼</a></li>
+        <li><a href="pool.html">Бассейн & Баня</a></li>
+        <li><a href="ekskurs.html">Экскурсии</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+      <a href="tel:+79280701155" class="phone-box">+7 (928) 070-11-55</a>
+    </nav>
+
+    <section class="photo-section" id="menu">
+      <h2 class="section-title">Меню</h2>
+
+      <div class="photo-row">
+        <div class="photo-card">
+          <img src="assets/menu1.png" alt="Завтрак">
+          <div class="menu-overlay">
+            <div class="menu-header">
+              <h5>Завтрак</h5>
+              <a href="rest.html" class="menu-button">
+                меню <img src="assets/arrow.svg" alt="→" class="menu-arrow" />
+              </a>
+            </div>
+            <p>Завтраки, которые не только насытят, но и подарят энергию на весь день. С 9:00 до 12:00.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/menu2.png" alt="Основное">
+          <div class="menu-overlay">
+            <div class="menu-header">
+              <h5>Основное</h5>
+              <a href="rest.html" class="menu-button">
+                меню <img src="assets/arrow.svg" alt="→" class="menu-arrow" />
+              </a>
+            </div>
+            <p>Меню объединяет осетинские, кавказские и европейские блюда, приготовленные с любовью.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/menu3.png" alt="Бар">
+          <div class="menu-overlay">
+            <div class="menu-header">
+              <h5>Бар</h5>
+              <a href="rest.html" class="menu-button">
+                меню <img src="assets/arrow.svg" alt="→" class="menu-arrow" />
+              </a>
+            </div>
+            <p>Напитки под ваше настроение. Прекрасный выбор для любого повода и компании.</p>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="assets/menu4.png" alt="Вино">
+          <div class="menu-overlay">
+            <div class="menu-header">
+              <h5>Вино</h5>
+              <a href="rest.html" class="menu-button">
+                меню <img src="assets/arrow.svg" alt="→" class="menu-arrow" />
+              </a>
+            </div>
+            <p>Тщательно подобранная Винная карта. От ярких белых и свежих розовых до насыщенных красных.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-buttons">
+        <button class="btn-outline">Забронировать стол</button>
+        <button class="btn-filled">Забронировать номер</button>
+      </div>
+    </section>
+
+
+
+    <section class="section-block" id="photo">
+        <h2 class="section-title">Фото</h2>
+        <div class="gallery-row">
+          <img src="assets/rest-photos1.png" alt="Фото 1">
+          <img src="assets/rest-photos2.png" alt="Фото 2">
+        </div>
+
+        <div class="gallery-row">
+          <img src="assets/rest-photos3.png" alt="Фото 3">
+          <img src="assets/rest-photos4.png" alt="Фото 4">
+        </div>
+
+        <div class="gallery-row gallery-row-3">
+          <img src="assets/rest-photos5.png" alt="Фото 5">
+          <img src="assets/rest-photos6.png" alt="Фото 6">
+          <img src="assets/rest-photos7.png" alt="Фото 7">
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+
+      <div class="footer-logo">
+        <div>
+          <img src="assets/footer_logo.png" alt="Логотип" />
+        </div>
+        <div class="prav_info">
+          <p><a href="https://example.com" style="color:#ccc; text-decoration: underline;">Правовая информация</a></p>
+          <p>&#169 2025. Парк-отель Дзуарикау</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+
+        <div class="footer-column">
+          <h4>Навигация</h4>
+          <a href="index.html">Об отеле</a>
+          <a href="rooms.html">Номера</a>
+          <a href="restik.html">Ресторан</a>
+          <a href="pool.html">Бассейн & Баня</a>
+          <a href="ekskurs.html">Экскурсии</a>
+          <a href="contacts.html">Контакты</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>График работы</h4>
+          <span>с 8:00 до 23:00</span>
+        </div>
+
+        <div class="footer-column">
+          <h4>Адрес</h4>
+          <div class="map-link">
+            <img src="assets/Yandex_Maps_icon.svg.png" alt="Яндекс карты" width="42" height="42" />
+            <a href="https://yandex.ru/maps" target="_blank">Республика Северная Осетия — Алания,<br> село Дзуарикау, улица А. Кцоева, 25</a>
+          </div>
+          <a href="tel:+79280701155" class="phone-box">+7 (928) 070-11-55</a>
+          <div class="social-icons">
+            <a href="https://wa.me/71234567890" target="_blank">
+              <img src="assets/whats.png" alt="WhatsApp" width="38" height="38" />
+            </a>
+            <a href="https://www.instagram.com/dzuarikau_hotel?igsh=MTFjOXhkcTd2dnR6ZQ==" target="_blank">
+              <img src="assets/instagram.svg" alt="Instagram" width="38" height="38" />
+            </a>
+            <a href="https://t.me/dzuarikau" target="_blank">
+              <img src="assets/tgk.png" alt="Telegram" width="38" height="38" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.querySelector('.nav');
+        const trigger = document.querySelector('.trigger-point');
+
+        if (!nav || !trigger) {
+          console.warn('nav или trigger-point не найдены', { nav, trigger });
+          return;
+        }
+
+        let lastScrollY = window.scrollY;
+        let navVisible = false;
+
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY;
+          const triggerTop = trigger.getBoundingClientRect().top;
+
+          const scrollingDown = scrollY > lastScrollY;
+          const scrollingUp = scrollY < lastScrollY;
+
+          if (scrollingDown && !navVisible && triggerTop <= 0) {
+            nav.classList.add('visible');
+            navVisible = true;
+          }
+
+          if (scrollingUp && navVisible && triggerTop > 0) {
+            nav.classList.remove('visible');
+            navVisible = false;
+          }
+
+          lastScrollY = scrollY;
+        });
+    });
+  </script>
+
+
+</body>
+</html>
