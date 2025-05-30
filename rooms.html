@@ -273,27 +273,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
   
   <script>
-  $(document).ready(function() {
-    // Инициализация Magnific Popup
+    $(document).ready(function() {
     $('.popup-button').magnificPopup({
       type: 'inline',
       items: {
-        src: $('#booking-popup'), // Важно: передаём jQuery-объект, а не строку!
+        src: $('#booking-popup'),
       },
       preloader: false,
       callbacks: {
         open: function() {
-          // Проверяем, загружен ли скрипт Otelix
-          if (typeof BDraivHotelForm === 'function') {
-            BDraivHotelForm('.hotelBdraivForm', true);
-          } else {
-            var script = document.createElement('script');
-            script.src = 'https://otelix.pro/js/hotelBdraivLoader.js?t=' + Date.now();
-            script.onload = function() {
-              BDraivHotelForm('.hotelBdraivForm', true);
-            };
-            document.body.appendChild(script);
+          // Если функция уже есть, вызываем её
+          if (window.BDraivHotelForm) {
+            window.BDraivHotelForm('.hotelBdraivForm', true);
+            return;
           }
+  
+          // Если нет, загружаем скрипт и ждём
+          var script = document.createElement('script');
+          script.src = 'https://otelix.pro/js/hotelBdraivLoader.js?t=' + Date.now();
+          script.onload = function() {
+            // Проверяем ещё раз (на случай, если скрипт не определил функцию)
+            if (window.BDraivHotelForm) {
+              window.BDraivHotelForm('.hotelBdraivForm', true);
+            } else {
+              console.error('BDraivHotelForm не определена после загрузки скрипта!');
+            }
+          };
+          script.onerror = function() {
+            console.error('Ошибка загрузки hotelBdraivLoader.js!');
+          };
+          document.body.appendChild(script);
         }
       }
     });
