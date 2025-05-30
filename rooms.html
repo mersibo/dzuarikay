@@ -268,7 +268,7 @@
   </footer>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
   
@@ -277,19 +277,20 @@
     // Инициализация Magnific Popup
     $('.popup-button').magnificPopup({
       type: 'inline',
+      items: {
+        src: $('#booking-popup'), // Важно: передаём jQuery-объект, а не строку!
+      },
       preloader: false,
-      modal: false,
       callbacks: {
         open: function() {
           // Проверяем, загружен ли скрипт Otelix
           if (typeof BDraivHotelForm === 'function') {
-            BDraivHotelForm('.popup-wrapper .hotelBdraivForm', true);
+            BDraivHotelForm('.hotelBdraivForm', true);
           } else {
-            // Если скрипт не загружен, загружаем его
             var script = document.createElement('script');
             script.src = 'https://otelix.pro/js/hotelBdraivLoader.js?t=' + Date.now();
             script.onload = function() {
-              BDraivHotelForm('.popup-wrapper .hotelBdraivForm', true);
+              BDraivHotelForm('.hotelBdraivForm', true);
             };
             document.body.appendChild(script);
           }
