@@ -8,6 +8,9 @@
   <link rel="icon" href="assets/iconka1.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 </head>
 <body>
   <header>
@@ -109,19 +112,6 @@
                     <span>1 ночь / 2 гостя</span>
                 </div>
                   <button class="book-btn popup-button">Забронировать</button>
-
-                  <!-- Popup-контейнер (изначально скрыт) -->
-                  <div class="popup-wrapper mfp-hide" style="display: none;">
-                    <div class="hotelBdraivForm" 
-                         data-online="1" 
-                         data-frame_width="100%" 
-                         data-frame_height="500" 
-                         data-online_full="1" 
-                         data-frame_src="https://otelix.pro/bookOnline/91u/t-592" 
-                         data-class_frame_src="https://otelix.pro/bookOnline/91u/t-592/c-otelixClass" 
-                         style="width:100%; min-height:500px;">
-                    </div>
-                  </div>
                 </div>
             </div>
         </div>
@@ -271,42 +261,56 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
-  
+
   <script>
     $(document).ready(function() {
-    $('.popup-button').magnificPopup({
-      type: 'inline',
-      items: {
-        src: $('#booking-popup'),
-      },
-      preloader: false,
-      callbacks: {
-        open: function() {
-          // Если функция уже есть, вызываем её
-          if (window.BDraivHotelForm) {
-            window.BDraivHotelForm('.hotelBdraivForm', true);
-            return;
-          }
-  
-          // Если нет, загружаем скрипт и ждём
-          var script = document.createElement('script');
-          script.src = 'https://otelix.pro/js/hotelBdraivLoader.js?t=' + Date.now();
-          script.onload = function() {
-            // Проверяем ещё раз (на случай, если скрипт не определил функцию)
-            if (window.BDraivHotelForm) {
-              window.BDraivHotelForm('.hotelBdraivForm', true);
+      // Инициализация Magnific Popup
+      $('.popup-button').magnificPopup({
+        type: 'inline',
+        items: {
+          src: '<div class="popup-wrapper"><div class="hotelBdraivForm" ' +
+               'data-online="1" data-frame_width="100%" data-frame_height="500" ' +
+               'data-online_full="1" data-frame_src="https://otelix.pro/bookOnline/91u/t-592" ' +
+               'data-class_frame_src="https://otelix.pro/bookOnline/91u/t-592/c-otelixClass" ' +
+               'style="width:100%; min-height:500px;"></div></div>'
+        },
+        preloader: false,
+        callbacks: {
+          open: function() {
+            // Проверяем, загружен ли скрипт Otelix
+            if (window.otelixScriptInjected) {
+              initOtelixForm();
             } else {
-              console.error('BDraivHotelForm не определена после загрузки скрипта!');
+              loadOtelixScript();
             }
-          };
-          script.onerror = function() {
-            console.error('Ошибка загрузки hotelBdraivLoader.js!');
-          };
-          document.body.appendChild(script);
+          }
+        }
+      });
+    
+      function loadOtelixScript() {
+        var script = document.createElement('script');
+        script.src = 'https://otelix.pro/js/hotelBdraivLoader.js?t=' + new Date().getTime();
+        script.onload = function() {
+          window.otelixScriptInjected = true;
+          initOtelixForm();
+        };
+        script.onerror = function() {
+          console.error('Ошибка загрузки скрипта Otelix');
+        };
+        document.body.appendChild(script);
+      }
+    
+      function initOtelixForm() {
+        if (typeof BDraivHotelForm === 'function') {
+          BDraivHotelForm('.popup-wrapper .hotelBdraivForm', true);
+        } else {
+          console.error('Функция BDraivHotelForm не найдена');
+          // Альтернативная инициализация, если функция недоступна
+          var form = document.querySelector('.popup-wrapper .hotelBdraivForm');
+          if (form) form.innerHTML = '<iframe src="https://otelix.pro/bookOnline/91u/t-592" style="width:100%;height:500px;border:none;"></iframe>';
         }
       }
     });
-  });
   </script>
   <script>
       document.addEventListener('DOMContentLoaded', () => {
