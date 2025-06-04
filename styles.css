@@ -711,7 +711,7 @@ footer {
 .price-and-book {
     display: flex;
     flex-direction: column;
-    margin-top: 115px;
+    margin-top: 50px;
     gap: 10px;
 }
 
